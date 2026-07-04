@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CharacterSheetPageRouteImport } from './routes/characterSheetPage'
 import { Route as IndexRouteImport } from './routes/index'
 
+const CharacterSheetPageRoute = CharacterSheetPageRouteImport.update({
+  id: '/characterSheetPage',
+  path: '/characterSheetPage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/characterSheetPage': typeof CharacterSheetPageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/characterSheetPage': typeof CharacterSheetPageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/characterSheetPage': typeof CharacterSheetPageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/characterSheetPage'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/characterSheetPage'
+  id: '__root__' | '/' | '/characterSheetPage'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CharacterSheetPageRoute: typeof CharacterSheetPageRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/characterSheetPage': {
+      id: '/characterSheetPage'
+      path: '/characterSheetPage'
+      fullPath: '/characterSheetPage'
+      preLoaderRoute: typeof CharacterSheetPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CharacterSheetPageRoute: CharacterSheetPageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

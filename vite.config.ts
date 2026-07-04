@@ -12,14 +12,14 @@ export default defineConfig({
 		react(),
 		tailwindcss(),
 		TanStackRouterVite(),
-		viteStaticCopy({
-			targets: [
-				{
-					src: normalizePath(path.resolve("./src/assets/locales")),
-					dest: normalizePath(path.resolve("./dist")),
-				},
-			],
-		}),
+		// viteStaticCopy({
+		// 	targets: [
+		// 		{
+		// 			// src: normalizePath(path.resolve("./src/assets/locales")),
+		// 			dest: normalizePath(path.resolve("./dist")),
+		// 		},
+		// 	],
+		// }),
 	],
 	server: {
 		host: true,
