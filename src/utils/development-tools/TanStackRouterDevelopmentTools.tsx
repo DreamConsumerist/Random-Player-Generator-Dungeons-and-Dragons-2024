@@ -1,5 +1,5 @@
 import React from "react";
-import { isProduction } from "../../../common/utils";
+import { isProduction } from "../../../dump/common/utils";
 
 export const TanStackRouterDevelopmentTools = isProduction
 	? (): null => null
