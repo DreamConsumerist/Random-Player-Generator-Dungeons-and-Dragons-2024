@@ -10,7 +10,7 @@ export default function generateCharSheet(
 	const charLevel = generateLevel(input);
 	const charClass = generateClass(input, charLevel);
 	const charSpecies = generateSpecies(input, charLevel);
-	const charStats = generateStats(charClass, charLevel);
+	const charStats = generateStats(charClass);
 	// const charHp = generateHp(charLevel, charClass);
 	// const charWeapons = generateWeapons(charClass);
 	// const charArmor = generateArmor(charClass)
@@ -21,7 +21,7 @@ export default function generateCharSheet(
 		level: charLevel,
 		class: charClass,
 		species: charSpecies,
-		// stats: charStats,
+		stats: charStats,
 		// currHp: charHp,
 		// maxHp: charHp,
 		// deathSaves: {successes: 0, failures: 0},

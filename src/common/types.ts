@@ -40,7 +40,7 @@ export interface CharacterSheet {
 	level: number;
 	class: Class;
 	species: Species;
-	// stats: StatArray,
+	stats: StatArray;
 	// currHp: number,
 	// maxHp: number,
 	// raceAbilities: Ability[],
@@ -70,7 +70,7 @@ export interface DeathSaves {
 	successes: number;
 	failures: number;
 }
-export interface Dragonborn
+// export interface Dragonborn
 export interface Feature {
 	name?: string;
 	description: string;
