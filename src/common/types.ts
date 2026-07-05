@@ -9,17 +9,37 @@ type IconProps = HeroIconSVGProps & {
 export type Heroicon = React.FC<IconProps>;
 
 export interface GenerateCharSheetInput {
-	numOpponents: number,
-	difficulty: number,
-	numMagicItems: number,
-	strMagicItems: number,
+	numOpponents: number;
+	difficulty: number;
+	numMagicItems: number;
+	strMagicItems: number;
 }
-
+export interface Ability {
+	name: string;
+	realFeatures?: Feature[];
+	trimFeatures?: Feature[];
+	levelReq?: number;
+}
+export interface Armor {
+	name: string;
+	armorClass: string;
+	ability?: Ability[];
+}
+export interface AssocAbilities {
+	assoc: string;
+	abilities: Ability[];
+	spellAbility?: string;
+}
+export interface CharDetails {
+	age: number;
+	background: string;
+	relationship?: string;
+}
 export interface CharacterSheet {
 	// name: string,
-	level: number,
-	// class: Class,
-	// race: Race,
+	level: number;
+	class: Class;
+	species: Species;
 	// stats: StatArray,
 	// currHp: number,
 	// maxHp: number,
@@ -31,72 +51,67 @@ export interface CharacterSheet {
 	// armorClass: number,
 	// lore?: CharDetails
 }
-
-export interface StatArray {
-	str: number,
-	dex: number,
-	con: number,
-	int: number,
-	wis: number,
-	cha: number,
+export interface Class {
+	name: string;
+	subclass?: string;
+	abilities: Ability[];
+	spellAbility?: string;
 }
-
-export interface Class { 
-	name: string,
-	subclass: string,
-	abilities: Ability[]
+export interface ClassSubclasses {
+	class: string;
+	subclass: string[];
 }
-
-export interface Race {
-	name: string,
-	abilities: Ability[],
-	speed: Speed
-}
-
-export interface Speed {
-	groundSpeed: number,
-	flySpeed: number,
-	burrowSpeed: number,
-	swimSpeed: number,
-	climbSpeed: number,
-}
-
-export interface Ability {
-	name: string,
-	availUses: number,
-	maxUses: number,
-	feature: string,
-	canBeActivated: boolean,
-	active: boolean,
-}
-
-export interface DeathSaves { 
-	successes: number,
-	failures: number,
-}
-
-export interface Weapon {
-	name: string,
-	masteryType: string,
-	damage: DamageDice[],
-	ability?: Ability[],
-	bonusAmt: number
-}
-
-export interface Armor {
-	name: string,
-	armorClass: string,
-	ability?: Ability[]
-}
-
 export interface DamageDice {
-	numDice: number,
-	damageType: string,
-	diceSides: number
+	numDice: number;
+	damageType: string;
+	diceSides: number;
 }
-
-export interface CharDetails {
-	age: number,
-	background: string,
-	relationship?: string
+export interface DeathSaves {
+	successes: number;
+	failures: number;
+}
+export interface Dragonborn
+export interface Feature {
+	name?: string;
+	description: string;
+	actionEcon?: string;
+	maxUses?: number | string;
+	currUses?: number | string;
+	canBeEnabled: boolean;
+	enabled?: boolean;
+	duration?: number; //seconds, converted to turns
+	refreshTime?: string;
+	options?: string[];
+}
+export interface Species {
+	name: string;
+	subspecies?: string;
+	abilities: Ability[];
+	creatureType: string;
+	size: string[];
+	speed: Speed;
+	resistances?: string[];
+	darkvision?: number;
+}
+export interface Speed {
+	groundSpeed: number;
+	flySpeed?: number;
+	burrowSpeed?: number;
+	swimSpeed?: number;
+	climbSpeed?: number;
+}
+export interface StatArray {
+	str: number;
+	dex: number;
+	con: number;
+	int: number;
+	wis: number;
+	cha: number;
+}
+export interface Weapon {
+	name: string;
+	masteryType: string;
+	damage: DamageDice[];
+	ability?: Ability[];
+	bonusAmt: number;
 }
