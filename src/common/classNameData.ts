@@ -11,6 +11,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Cartographer",
 			"Reanimator",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
 		class: "Barbarian",
@@ -20,6 +21,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Path of the World Tree",
 			"Path of the Zealot",
 		],
+		hitdice: { numDice: 1, diceSides: 12 },
 	},
 	{
 		class: "Bard",
@@ -31,6 +33,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"College of the Moon",
 			"College of Valor",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
 		class: "Cleric",
@@ -42,6 +45,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Trickery Domain",
 			"War Domain",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
 		class: "Druid",
@@ -51,6 +55,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Circle of the Sea",
 			"Circle of the Stars",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
 		class: "Fighter",
@@ -61,6 +66,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Eldritch Knight",
 			"Psi Warrior",
 		],
+		hitdice: { numDice: 1, diceSides: 10 },
 	},
 	{
 		class: "Monk",
@@ -70,6 +76,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Warrior of the Elements",
 			"Warrior of the Open Hand",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
 		class: "Paladin",
@@ -80,6 +87,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Oath of the Noble Genies",
 			"Oath of Vengeance",
 		],
+		hitdice: { numDice: 1, diceSides: 10 },
 	},
 	{
 		class: "Ranger",
@@ -91,6 +99,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Hunter",
 			"Winter Walker",
 		],
+		hitdice: { numDice: 1, diceSides: 10 },
 	},
 	{
 		class: "Rogue",
@@ -102,9 +111,10 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Soulknife",
 			"Thief",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
-		class: "Sorceror",
+		class: "Sorcerer",
 		subclass: [
 			"Aberrant Sorcery",
 			"Clockwork Sorcery",
@@ -113,6 +123,7 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Spellfire Sorcery",
 			"Wild Magic Sorcery",
 		],
+		hitdice: { numDice: 1, diceSides: 6 },
 	},
 	{
 		class: "Warlock",
@@ -123,9 +134,11 @@ export const DND_CLASS_SUBCLASS: ClassSubclasses[] = [
 			"Great Old One Patron",
 			"Undead Patron",
 		],
+		hitdice: { numDice: 1, diceSides: 8 },
 	},
 	{
 		class: "Wizard",
 		subclass: ["Abjurer", "Bladesinger", "Diviner", "Evoker", "Illusionist"],
+		hitdice: { numDice: 1, diceSides: 6 },
 	},
 ];

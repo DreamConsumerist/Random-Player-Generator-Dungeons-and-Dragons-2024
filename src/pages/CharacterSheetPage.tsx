@@ -51,6 +51,13 @@ export const CharacterSheetPage = () => {
 					<div>WIS: {charData.stats.wis}</div>
 					<div>CHA: {charData.stats.cha}</div>
 				</div>
+				<br />
+				<div>
+					<strong>HP</strong>
+					<div>
+						{charData.currHp} / {charData.maxHp}{" "}
+					</div>
+				</div>
 			</div>
 		);
 	}

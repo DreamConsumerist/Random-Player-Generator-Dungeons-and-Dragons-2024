@@ -35,10 +35,14 @@ export default function generateClass(
 		const charClassAbilities = classAbilities.abilities.filter(
 			(ability: Ability) => !ability.levelReq || level >= ability.levelReq
 		);
+		const charHitDice = DND_CLASS_SUBCLASS[5].hitdice;
+		charHitDice.numDice = level;
+
 		const charClass: Class = {
 			name: charBaseClass,
 			subclass: charSubclass,
 			abilities: charClassAbilities,
+			hitdice: charHitDice,
 		};
 
 		return charClass;

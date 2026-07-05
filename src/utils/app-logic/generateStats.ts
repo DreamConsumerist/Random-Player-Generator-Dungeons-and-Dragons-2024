@@ -1,11 +1,9 @@
 import { StatArray, Class } from "../../common/types";
 import { BASE_STAT_ARRAYS } from "../../common/statData";
-import { getRandomInt } from "../../common/generalScripts";
+import { getRandomInt, getWeightedRandom } from "../../common/generalScripts";
 
 export default function generateStats(charClass: Class): StatArray {
-	const baseStatArrayLength = BASE_STAT_ARRAYS.length;
-	const randomStatArrayIndex = getRandomInt(0, baseStatArrayLength - 1);
-	const statArray = BASE_STAT_ARRAYS[randomStatArrayIndex];
+	const statArray = getWeightedRandom(BASE_STAT_ARRAYS);
 	if (!statArray) {
 		throw new Error("No stat array found");
 	}
@@ -16,10 +14,33 @@ function preferenceBaseAllocation(
 	statArray: number[],
 	charClass: Class
 ): StatArray {
-	const fighterOdds: number[] = [20, 40, 70, 77, 93, 100];
 	switch (charClass.name) {
+		case "Artificer":
+			return distributeStats([5, 5, 20, 60, 5, 5], statArray);
+		case "Barbarian":
+			return distributeStats([30, 14, 40, 2, 10, 4], statArray);
+		case "Bard":
+			return distributeStats([10, 30, 50, 70, 90, 60], statArray);
+		case "Cleric":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Druid":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
 		case "Fighter":
-			return distributeStats(fighterOdds, statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
+		case "Monk":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Paladin":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Ranger":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Rogue":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Sorcerer":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Warlock":
+			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+		case "Wizard":
+			return distributeStats([2, 4, 10, 80, 2, 2], statArray);
 		default:
 			throw new Error("Class not eligible.");
 	}
@@ -35,6 +56,38 @@ function distributeStats(odds: number[], statArray: number[]): StatArray {
 		wis: -1,
 		cha: -1,
 	};
+	const strThreshold = odds[0];
+	const dexThreshold = odds.slice(0, 2).reduce((acc, curr) => {
+		return acc + curr;
+	});
+	const conThreshold = odds.slice(0, 3).reduce((acc, curr) => {
+		return acc + curr;
+	});
+	const intThreshold = odds.slice(0, 4).reduce((acc, curr) => {
+		return acc + curr;
+	});
+	const wisThreshold = odds.slice(0, 5).reduce((acc, curr) => {
+		return acc + curr;
+	});
+	const chaThreshold = odds.reduce((acc, curr) => {
+		return acc + curr;
+	});
+	if (
+		!strThreshold ||
+		!dexThreshold ||
+		!conThreshold ||
+		!intThreshold ||
+		!wisThreshold ||
+		!chaThreshold
+	) {
+		throw new Error("Odds array not populated");
+	}
+	console.log(`str threshold: ${strThreshold}`);
+	console.log(`dex threshold: ${dexThreshold}`);
+	console.log(`con threshold: ${conThreshold}`);
+	console.log(`int threshold: ${intThreshold}`);
+	console.log(`wis threshold: ${wisThreshold}`);
+	console.log(`cha threshold: ${chaThreshold}`);
 	let iter = 0;
 	while (iter < 6) {
 		const currStatValue = statArray[iter];
@@ -42,28 +95,39 @@ function distributeStats(odds: number[], statArray: number[]): StatArray {
 			throw new Error("Blah");
 		}
 		const randPick = getRandomInt(0, 100);
+		console.log(`Rolled ${randPick}`);
 		switch (true) {
-			case randPick <= odds[0] && charStatArray.str == -1:
+			case randPick <= strThreshold && charStatArray.str == -1:
 				charStatArray.str = currStatValue;
 				iter++;
 				break;
-			case randPick <= odds[1] && charStatArray.dex == -1:
+			case randPick > strThreshold &&
+				randPick <= dexThreshold &&
+				charStatArray.dex == -1:
 				charStatArray.dex = currStatValue;
 				iter++;
 				break;
-			case randPick <= odds[2] && charStatArray.con == -1:
+			case randPick > dexThreshold &&
+				randPick <= conThreshold &&
+				charStatArray.con == -1:
 				charStatArray.con = currStatValue;
 				iter++;
 				break;
-			case randPick <= odds[3] && charStatArray.int == -1:
+			case randPick > conThreshold &&
+				randPick <= intThreshold &&
+				charStatArray.int == -1:
 				charStatArray.int = currStatValue;
 				iter++;
 				break;
-			case randPick <= odds[4] && charStatArray.wis == -1:
+			case randPick > intThreshold &&
+				randPick <= wisThreshold &&
+				charStatArray.wis == -1:
 				charStatArray.wis = currStatValue;
 				iter++;
 				break;
-			case randPick <= odds[5] && charStatArray.cha == -1:
+			case randPick > wisThreshold &&
+				randPick <= chaThreshold &&
+				charStatArray.cha == -1:
 				charStatArray.cha = currStatValue;
 				iter++;
 				break;

@@ -41,29 +41,29 @@ export interface CharacterSheet {
 	class: Class;
 	species: Species;
 	stats: StatArray;
-	// currHp: number,
-	// maxHp: number,
-	// raceAbilities: Ability[],
-	// classAbilities: Ability[],
-	// deathSaves: DeathSaves,
+	currHp: number;
+	maxHp: number;
+	deathSaves: DeathSaves;
 	// weapons: Weapon[],
 	// armor: Armor[],
-	// armorClass: number,
-	// lore?: CharDetails
+	// armorClass: number;
+	lore?: CharDetails;
 }
 export interface Class {
 	name: string;
 	subclass?: string;
 	abilities: Ability[];
 	spellAbility?: string;
+	hitdice: DiceRoll;
 }
 export interface ClassSubclasses {
 	class: string;
 	subclass: string[];
+	hitdice: DiceRoll;
 }
-export interface DamageDice {
+export interface DiceRoll {
 	numDice: number;
-	damageType: string;
+	damageType?: string;
 	diceSides: number;
 }
 export interface DeathSaves {
@@ -82,6 +82,10 @@ export interface Feature {
 	duration?: number; //seconds, converted to turns
 	refreshTime?: string;
 	options?: string[];
+}
+export interface RollResult {
+	numResult: number;
+	damageType?: string;
 }
 export interface Species {
 	name: string;
@@ -114,4 +118,9 @@ export interface Weapon {
 	damage: DamageDice[];
 	ability?: Ability[];
 	bonusAmt: number;
+}
+
+export interface WeightedArray<T> {
+	value: T;
+	weight: number;
 }
