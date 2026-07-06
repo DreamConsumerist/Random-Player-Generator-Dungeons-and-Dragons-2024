@@ -141,6 +141,162 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 		spellAbility: "INT",
 	},
 	{
+		assoc: "Barbarian",
+		abilities: [
+			{
+				name: "Rage",
+				levelReq: 1,
+			},
+			{
+				name: "Unarmored Defense",
+				levelReq: 1,
+			},
+			{
+				name: "Danger Sense",
+				levelReq: 2,
+			},
+			{
+				name: "Reckless Attack",
+				levelReq: 2,
+			},
+			{
+				name: "Extra Attack",
+				levelReq: 5, // prob going to move this elsewhere in the char sheet
+			},
+			{
+				name: "Fast Movement",
+				levelReq: 5,
+			},
+			{
+				name: "Feral Instinct",
+				levelReq: 7,
+			},
+			{
+				name: "Instinctive Pounce",
+				levelReq: 7,
+			},
+			// Brutal Strike (has upgrades)
+			// Relentless Rage
+			// Persistent Rage
+			// Indomitable Might
+			// Primal Champion
+		],
+	},
+	{
+		assoc: "Bard",
+		abilities: [
+			{
+				name: "Bardic Inspiration",
+				levelReq: 1,
+			},
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Expertise",
+				levelReq: 2,
+			},
+			{
+				name: "Jack of All Trades",
+				levelReq: 2,
+			},
+			{
+				name: "Font of Inspiration",
+				levelReq: 5,
+			},
+			{
+				name: "Countercharm",
+				levelReq: 7,
+			},
+			{
+				name: "Magical Secrets",
+				levelReq: 10,
+			},
+			{
+				name: "Superior Inspiration",
+				levelReq: 18,
+			},
+			{
+				name: "Words of Creation",
+				levelReq: 20,
+			},
+		],
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Cleric",
+		abilities: [
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Divine Order",
+				levelReq: 1,
+			},
+			{
+				name: "Channel Divinity",
+				levelReq: 2,
+			},
+			{
+				name: "Sear Undead",
+				levelReq: 5,
+			},
+			{
+				name: "Blessed Strikes", // has upgrade
+				levelReq: 7,
+			},
+			{
+				name: "Divine Intervention", // has upgrade
+				levelReq: 10,
+			},
+		],
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Druid",
+		abilities: [
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Druidic",
+				levelReq: 1,
+			},
+			{
+				name: "Primal Order",
+				levelReq: 1,
+			},
+			{
+				name: "Wild Shape",
+				levelReq: 2,
+			},
+			{
+				name: "Wild Companion",
+				levelReq: 2,
+			},
+			{
+				name: "Wild Resurgence",
+				levelReq: 5,
+			},
+			{
+				name: "Elemental Fury", // has upgrade
+				levelReq: 7,
+			},
+			{
+				name: "Beast Spells",
+				levelReq: 18,
+			},
+			{
+				name: "Archdruid",
+				levelReq: 20,
+			},
+		],
+		spellAbility: "WIS",
+	},
+	{
 		assoc: "Fighter",
 		abilities: [
 			// Fighting Style will be in Feat resolution
@@ -230,5 +386,170 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 			// Studied Attacks
 			// Three Extra Attacks
 		],
+	},
+	{
+		assoc: "Monk",
+		abilities: [
+			{
+				name: "Martial Arts",
+				levelReq: 1,
+			},
+			{
+				name: "Unarmored Defense",
+				levelReq: 1,
+			},
+			{
+				name: "Monk's Focus",
+				levelReq: 2,
+			},
+			{
+				name: "Unarmored Movement",
+				levelReq: 2,
+			},
+			{
+				name: "Uncanny Metabolism",
+				levelReq: 2,
+			},
+			{
+				name: "Deflect Attacks",
+				levelReq: 3,
+			},
+			{
+				name: "Slow Fall",
+				levelReq: 4,
+			},
+			{
+				name: "Extra Attack",
+				levelReq: 5,
+			},
+			{
+				name: "Stunning Strike",
+				levelReq: 5,
+			},
+			{
+				name: "Empowered Strikes",
+				levelReq: 6,
+			},
+			{
+				name: "Evasion",
+				levelReq: 7,
+			},
+			{
+				name: "Acrobatic Movement",
+				levelReq: 9,
+			},
+			{
+				name: "Heightened Focus",
+				levelReq: 10,
+			},
+			{
+				name: "Self-Restoration",
+				levelReq: 10,
+			},
+			{
+				name: "Deflect Energy",
+				levelReq: 13,
+			},
+			{
+				name: "Disciplined Survivor",
+				levelReq: 14,
+			},
+			{
+				name: "Perfect Focus",
+				levelReq: 15,
+			},
+			{
+				name: "Superior Defense",
+				levelReq: 18,
+			},
+			{
+				name: "Body and Mind",
+				levelReq: 20,
+			},
+		],
+	},
+	{
+		assoc: "Paladin",
+		abilities: [
+			{
+				name: "Lay On Hands",
+				levelReq: 1,
+			},
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Paladin's Smite",
+				levelReq: 2,
+			},
+			{
+				name: "Channel Divinity",
+				levelReq: 3,
+			},
+			{
+				name: "Extra Attack",
+				levelReq: 5,
+			},
+			{
+				name: "Faithful Steed",
+				levelReq: 5,
+			},
+			{
+				name: "Aura of Protection",
+				levelReq: 6,
+			},
+			{
+				name: "Abjure Foes",
+				levelReq: 9,
+			},
+			{
+				name: "Aura of Courage",
+				levelReq: 10,
+			},
+			{
+				name: "Radiant Strikes",
+				levelReq: 11,
+			},
+			{
+				name: "Restoring Touch",
+				levelReq: 14,
+			},
+			{
+				name: "Aura Expansion",
+				levelReq: 18,
+			},
+		],
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Ranger",
+		abilities: [],
+		//TODO: Abilities over level 7
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Rogue",
+		abilities: [],
+		//TODO: Abilities over level 7
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Sorcerer",
+		abilities: [],
+		//TODO: Abilities over level 7
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Warlock",
+		abilities: [],
+		//TODO: Abilities over level 7
+		spellAbility: "CHA",
+	},
+	{
+		assoc: "Wizard",
+		abilities: [],
+		//TODO: Abilities over level 7
+		spellAbility: "CHA",
 	},
 ];

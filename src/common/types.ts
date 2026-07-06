@@ -77,7 +77,7 @@ export interface Feature {
 	actionEcon?: string;
 	maxUses?: number | string;
 	currUses?: number | string;
-	canBeEnabled: boolean;
+	canBeEnabled?: boolean;
 	enabled?: boolean;
 	duration?: number; //seconds, converted to turns
 	refreshTime?: string;

@@ -31,7 +31,8 @@ export const CharacterSheetPage = () => {
 				</div>
 				<br />
 				<div>
-					<strong>Species:</strong> {charData.species.name}
+					<strong>Species:</strong> {charData.species?.subspecies}&nbsp;
+					{charData.species.name}
 				</div>
 				<div>
 					<strong>Species Abilities:</strong>

@@ -63,19 +63,6 @@ export const SPECIES_LIST: Species[] = [
 					{
 						description:
 							"Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance traits as well as your appearance.",
-						options: [
-							"Black",
-							"Blue",
-							"Brass",
-							"Bronze",
-							"Copper",
-							"Gold",
-							"Green",
-							"Red",
-							"Silver",
-							"White",
-						],
-						canBeEnabled: false,
 					},
 				],
 			},
@@ -85,7 +72,6 @@ export const SPECIES_LIST: Species[] = [
 					{
 						description:
 							"You can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus). On a failed save, a creature takes 1d10 damage of the type determined by your Draconic Ancestry trait. On a successful save, a creature takes half as much damage. This damage increases by 1d10 when you reach levels 5, 11, 17.",
-						canBeEnabled: false,
 						actionEcon: "Attack Action",
 						maxUses: "Proficiency Bonus",
 						refreshTime: "Long Rest",
@@ -98,7 +84,6 @@ export const SPECIES_LIST: Species[] = [
 					{
 						description:
 							"You have resistance to the damage type determined by your Draconic Ancestry trait.",
-						canBeEnabled: false,
 					},
 				],
 			},
@@ -109,7 +94,6 @@ export const SPECIES_LIST: Species[] = [
 						description:
 							"You can channel draconic magic to give yourself temporary flight. You sprout spectral wings on your back that last for 10 minutes or until you retract your wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed. Your wings appear to be made of the same energy as your Breath Weapon.",
 						canBeEnabled: true,
-						enabled: false,
 						duration: 600,
 						actionEcon: "Bonus Action",
 						refreshTime: "Long Rest",
@@ -132,7 +116,6 @@ export const SPECIES_LIST: Species[] = [
 					{
 						description:
 							"You have Advantage on saving throws you make to avoid or end the Poisoned condition",
-						canBeEnabled: false,
 					},
 				],
 			},
@@ -142,7 +125,6 @@ export const SPECIES_LIST: Species[] = [
 					{
 						description:
 							"Your Hit Point maximum increases by 1, and it increases by 1 again whenever you gain a level.",
-						canBeEnabled: false,
 					},
 				],
 			},
@@ -153,7 +135,6 @@ export const SPECIES_LIST: Species[] = [
 						description:
 							"You gain Tremorsense with a range of 60 feet. You must be on a stone surface or touching a stone surface to use this Tremorsense. The stone can be natural or worked.",
 						canBeEnabled: true,
-						enabled: false,
 						duration: 600,
 						maxUses: "Proficiency Bonus",
 						refreshTime: "Long Rest",
@@ -169,51 +150,271 @@ export const SPECIES_LIST: Species[] = [
 	},
 	{
 		name: "Elf",
-		abilities: [],
+		abilities: [
+			{
+				name: "Elven Lineage",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+			{
+				name: "Fey Ancestry",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+			{
+				name: "Keen Senses",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+			{
+				name: "Trance",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+		],
 		speed: { groundSpeed: 30 },
 		creatureType: "Humanoid",
-		size: ["Small", "Medium"],
+		size: ["Medium"],
+		darkvision: 60,
 	},
 	{
 		name: "Gnome",
-		abilities: [],
+		abilities: [
+			{
+				name: "Gnomish Cunning",
+				trimFeatures: [
+					{
+						description:
+							"You have Advantage on Intelligence, Wisdom, and Charisma saving throws.",
+					},
+				],
+			},
+			{
+				name: "Gnomish Lineage",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+		],
 		speed: { groundSpeed: 30 },
 		creatureType: "Humanoid",
-		size: ["Small", "Medium"],
+		size: ["Small"],
+		darkvision: 60,
 	},
 	{
 		name: "Goliath",
-		abilities: [],
+		abilities: [
+			{
+				name: "Giant Ancestry",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+			{
+				name: "Large Form",
+				trimFeatures: [
+					{
+						description:
+							"You can change your size to Large if you're in a big enough space. This transformation lasts for 10 minutes or until you end it (no action required). For that duration, you have Advantage on Strength checks, and your Speed increases by 10 feet.",
+						canBeEnabled: true,
+						maxUses: 1,
+						actionEcon: "Bonus Action",
+						refreshTime: "Long Rest",
+						duration: 600,
+					},
+				],
+				levelReq: 5,
+			},
+			{
+				name: "Powerful Build",
+				trimFeatures: [
+					{
+						description:
+							"You have advantage on any saving throw you make to end the Grappled condition. You also count as one size larger when determining your carrying capacity.",
+					},
+				],
+			},
+		],
 		speed: { groundSpeed: 30 },
 		creatureType: "Humanoid",
-		size: ["Small", "Medium"],
+		size: ["Medium"],
 	},
 	{
 		name: "Halfling",
-		abilities: [],
+		abilities: [
+			{
+				name: "Brave",
+				trimFeatures: [
+					{
+						description:
+							"You have Advantage on saving throws you make to avoid or end the Frightened condition.",
+					},
+				],
+			},
+			{
+				name: "Halfling Nimbleness",
+				trimFeatures: [
+					{
+						description:
+							"You can move through the space of any creature that is a size larger than you, but you can't stop in the same space",
+					},
+				],
+			},
+			{
+				name: "Lucky",
+				trimFeatures: [
+					{
+						description:
+							"When you roll a 1 on the d20 of a D20 test, you can reroll the die, and you must use the new roll.",
+					},
+				],
+			},
+			{
+				name: "ANaturally Stealthy",
+				trimFeatures: [
+					{
+						description:
+							"You can take the Hide action even when you are obscured only by a creature that is at least one size larger than you.",
+					},
+				],
+			},
+		],
 		speed: { groundSpeed: 30 },
 		creatureType: "Humanoid",
-		size: ["Small", "Medium"],
+		size: ["Small"],
 	},
 	{
 		name: "Human",
-		abilities: [],
+		abilities: [
+			{
+				name: "Resourceful",
+				trimFeatures: [
+					{
+						description:
+							"You gain Heroic Inspiration whenever you finish a Long Rest",
+					},
+				],
+			},
+			{
+				name: "Skillful",
+				trimFeatures: [
+					{
+						description: "You gain proficiency in one skill of your choice.",
+					},
+				],
+			},
+			{
+				name: "Versatile",
+				trimFeatures: [
+					{
+						description: "You gain an Origin feat of your choice.",
+					},
+				],
+			},
+		],
 		speed: { groundSpeed: 30 },
 		creatureType: "Humanoid",
 		size: ["Small", "Medium"],
 	},
 	{
 		name: "Orc",
-		abilities: [],
-		speed: { groundSpeed: 30 },
+		abilities: [
+			{
+				name: "Adrenaline Rush",
+				trimFeatures: [
+					{
+						description:
+							"You can take the Dash action as a Bonus Action. When you do so, you gain a number of Temporary Hit Points equal to your Proficiency Bonus.",
+						maxUses: "Proficiency Bonus",
+						refreshTime: "Short Rest",
+					},
+				],
+			},
+			{
+				name: "Relentless Endurance",
+				trimFeatures: [
+					{
+						description:
+							"When you are reduced to 0 Hit Points but not killed outright, you can drop to 1 Hit Point instead.",
+						maxUses: 1,
+						refreshTime: "Long Rest",
+					},
+				],
+			},
+		],
+		speed: { groundSpeed: 35 },
 		creatureType: "Humanoid",
-		size: ["Small", "Medium"],
+		size: ["Medium"],
+		darkvision: 120,
 	},
 	{
 		name: "Tiefling",
-		abilities: [],
+		abilities: [
+			{
+				name: "Fiendish Legacy",
+				trimFeatures: [
+					{
+						description: "",
+					},
+				],
+			},
+			{
+				name: "Otherworldly Presence",
+				trimFeatures: [
+					{
+						description:
+							"You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+					},
+				],
+			},
+		],
 		speed: { groundSpeed: 30 },
 		creatureType: "Humanoid",
 		size: ["Small", "Medium"],
 	},
+];
+
+// interface SubspeciesFeatures
+
+export const DRAGONBORN_SUBSPECIES: string[] = [
+	"Black",
+	"Blue",
+	"Brass",
+	"Bronze",
+	"Copper",
+	"Gold",
+	"Green",
+	"Red",
+	"Silver",
+	"White",
+];
+export const ELF_SUBSPECIES: string[] = ["Drow", "High", "Wood"];
+export const GNOME_SUBSPECIES: string[] = ["Rock", "Forest"];
+export const GOLIATH_SUBSPECIES: string[] = [
+	"Fire",
+	"Frost",
+	"Hill",
+	"Stone",
+	"Storm",
+];
+export const TIEFLING_SUBSPECIES: string[] = [
+	"Abyssal",
+	"Chthonic",
+	"Infernal",
 ];
