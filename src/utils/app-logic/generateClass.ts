@@ -1,7 +1,5 @@
-import { Ability, AssocAbilities } from "./../../common/types";
-import { CLASS_ABILITIES } from "./../../common/classAbilityData";
 import { GenerateCharSheetInput, Class } from "../../common/types";
-import { DND_CLASS_SUBCLASS } from "../../common/classNameData";
+import { CLASS_DEFINITIONS } from "../../common/classData";
 import { getRandomInt } from "../../common/generalScripts";
 
 export default function generateClass(
@@ -9,42 +7,33 @@ export default function generateClass(
 	level: number
 ): Class {
 	try {
-		const classListLength = DND_CLASS_SUBCLASS.length;
-		const classIndex = getRandomInt(0, classListLength - 1);
-		const charBaseClass = DND_CLASS_SUBCLASS[classIndex]?.class;
+		const classIndex = getRandomInt(0, CLASS_DEFINITIONS.length - 1);
+		const classDef = CLASS_DEFINITIONS[classIndex];
+		if (!classDef) {
+			throw new Error("No class found");
+		}
 		let charSubclass;
 		if (level >= 3) {
-			const subclassListLength =
-				DND_CLASS_SUBCLASS[classIndex]?.subclass.length;
+			const subclassListLength = classDef.subclasses.length;
 			if (!subclassListLength) {
 				throw new Error("No subclasses found");
 			}
 			const subclassIndex = getRandomInt(0, subclassListLength - 1);
-			charSubclass = DND_CLASS_SUBCLASS[classIndex]?.subclass[subclassIndex];
-		}
-		if (!charBaseClass) {
-			throw new Error("No class found");
+			charSubclass = classDef.subclasses[subclassIndex];
 		}
 		//TODO: Add subclass abilities
-		const filteredAbilities = CLASS_ABILITIES.filter(
-			(abilityColl: AssocAbilities) => abilityColl.assoc == charBaseClass
+		const charClassAbilities = classDef.abilities.filter(
+			(ability) => !ability.levelReq || level >= ability.levelReq
 		);
-		if (!filteredAbilities[0]) {
-			throw new Error("No abilities found");
-		}
-		const classAbilities = filteredAbilities[0];
-		const charClassAbilities = classAbilities.abilities.filter(
-			(ability: Ability) => !ability.levelReq || level >= ability.levelReq
-		);
-		// Copy so we don't mutate the shared DND_CLASS_SUBCLASS entry (generateHp
+		// Copy so we don't mutate the shared CLASS_DEFINITIONS entry (generateHp
 		// also mutates numDice on this object).
-		const charHitDice = { ...DND_CLASS_SUBCLASS[classIndex].hitdice };
-		charHitDice.numDice = level;
+		const charHitDice = { ...classDef.hitdice, numDice: level };
 
 		const charClass: Class = {
-			name: charBaseClass,
+			name: classDef.name,
 			subclass: charSubclass,
 			abilities: charClassAbilities,
+			spellAbility: classDef.spellAbility,
 			hitdice: charHitDice,
 		};
 

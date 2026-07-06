@@ -1,5 +1,6 @@
 import { StatArray, Class } from "../../common/types";
 import { BASE_STAT_ARRAYS } from "../../common/statData";
+import { CLASS_DEFINITIONS } from "../../common/classData";
 import { getRandomInt, getWeightedRandom } from "../../common/generalScripts";
 
 export default function generateStats(charClass: Class): StatArray {
@@ -7,43 +8,11 @@ export default function generateStats(charClass: Class): StatArray {
 	if (!statArray) {
 		throw new Error("No stat array found");
 	}
-	return preferenceBaseAllocation(statArray, charClass);
-}
-
-function preferenceBaseAllocation(
-	statArray: number[],
-	charClass: Class
-): StatArray {
-	switch (charClass.name) {
-		case "Artificer":
-			return distributeStats([5, 5, 20, 60, 5, 5], statArray);
-		case "Barbarian":
-			return distributeStats([30, 14, 40, 2, 10, 4], statArray);
-		case "Bard":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Cleric":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Druid":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Fighter":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Monk":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Paladin":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Ranger":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Rogue":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Sorcerer":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Warlock":
-			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
-		case "Wizard":
-			return distributeStats([2, 4, 10, 80, 2, 2], statArray);
-		default:
-			throw new Error("Class not eligible.");
+	const classDef = CLASS_DEFINITIONS.find((c) => c.name === charClass.name);
+	if (!classDef) {
+		throw new Error("Class not eligible.");
 	}
+	return distributeStats(classDef.statWeights, statArray);
 }
 
 // while loop that iterates over baseStatArray indices, taking a customized array, and returns a stat name for each

@@ -1,9 +1,10 @@
 import { useNavigate } from "@tanstack/react-router";
-import charSheetGeneration from "../utils/app-logic/charSheetGeneration";
-import { CharacterSheet, GenerateCharSheetInput } from "../common/types";
+import { GenerateCharSheetInput } from "../common/types";
+import { useCharacterStore } from "../store/characterStore";
 
 export const Home = () => {
 	const navigate = useNavigate();
+	const generate = useCharacterStore((state) => state.generate);
 	const HandleGenerationAndRedirect = async () => {
 		const charSheetInput: GenerateCharSheetInput = {
 			numOpponents: 1,
@@ -11,18 +12,15 @@ export const Home = () => {
 			numMagicItems: 1,
 			strMagicItems: 1,
 		};
-		const newCharSheet: CharacterSheet = charSheetGeneration(charSheetInput);
-		await navigate({
-			to: "/characterSheetPage",
-			search: { charData: JSON.stringify(newCharSheet) },
-		});
+		generate(charSheetInput);
+		await navigate({ to: "/characterSheetPage" });
 	};
 	return (
 		<div className="bg-blue-500 font-bold w-screen h-screen flex flex-col justify-center items-center">
 			<p className="text-white text-6xl">YO</p>
 			<button
 				className="hover:cursor-pointer"
-				type="submit"
+				type="button"
 				onClick={HandleGenerationAndRedirect}
 			>
 				Click this button for a random character

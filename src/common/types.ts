@@ -25,11 +25,6 @@ export interface Armor {
 	armorClass: string;
 	ability?: Ability[];
 }
-export interface AssocAbilities {
-	assoc: string;
-	abilities: Ability[];
-	spellAbility?: string;
-}
 export interface CharDetails {
 	age: number;
 	background: string;
@@ -56,10 +51,14 @@ export interface Class {
 	spellAbility?: string;
 	hitdice: DiceRoll;
 }
-export interface ClassSubclasses {
-	class: string;
-	subclass: string[];
+export interface ClassDefinition {
+	name: string;
 	hitdice: DiceRoll;
+	subclasses: string[];
+	abilities: Ability[];
+	spellAbility?: string;
+	/** Relative stat-preference weights [str, dex, con, int, wis, cha]; sums to 100. */
+	statWeights: number[];
 }
 export interface DiceRoll {
 	numDice: number;

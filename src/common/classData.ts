@@ -1,12 +1,28 @@
-import { AssocAbilities } from "./types";
+import { ClassDefinition } from "./types";
 
-export const CLASS_ABILITIES: AssocAbilities[] = [
+// Single source of truth for each class: hit dice, subclasses, abilities,
+// spellcasting ability, and stat-preference weights. Merged from the former
+// classNameData / classAbilityData / generateStats sources.
+
+export const CLASS_DEFINITIONS: ClassDefinition[] = [
 	{
-		assoc: "Artificer",
+		name: "Artificer",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"Alchemist",
+			"Armorer",
+			"Artillerist",
+			"Battle Smith",
+			"Cartographer",
+			"Reanimator",
+		],
 		abilities: [
 			{
 				name: "Spellcasting",
-				trimFeatures: [], // Manually account for any spells here in spell generation
+				trimFeatures: [],
 				realFeatures: [
 					{
 						name: "Tools Required",
@@ -131,17 +147,22 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				],
 				levelReq: 7,
 			},
-			//TODO: Abilities over level 7
-			// Magic Item Adept (10): This should just inflate the number of magic items opponents bring into battle
-			// Spell-Storing Item (11)
-			// Advanced Artifice (14)
-			// Magic Item Master (18)
-			// Soul of Artifice (20)
 		],
+		statWeights: [5, 5, 20, 60, 5, 5],
 		spellAbility: "INT",
 	},
 	{
-		assoc: "Barbarian",
+		name: "Barbarian",
+		hitdice: {
+			numDice: 1,
+			diceSides: 12,
+		},
+		subclasses: [
+			"Path of the Berserker",
+			"Path of the Wild Heart",
+			"Path of the World Tree",
+			"Path of the Zealot",
+		],
 		abilities: [
 			{
 				name: "Rage",
@@ -161,7 +182,7 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 			},
 			{
 				name: "Extra Attack",
-				levelReq: 5, // prob going to move this elsewhere in the char sheet
+				levelReq: 5,
 			},
 			{
 				name: "Fast Movement",
@@ -175,15 +196,23 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				name: "Instinctive Pounce",
 				levelReq: 7,
 			},
-			// Brutal Strike (has upgrades)
-			// Relentless Rage
-			// Persistent Rage
-			// Indomitable Might
-			// Primal Champion
 		],
+		statWeights: [30, 14, 40, 2, 10, 4],
 	},
 	{
-		assoc: "Bard",
+		name: "Bard",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"College of Dance",
+			"College of Glamour",
+			"College of Lore",
+			"College of Spirits",
+			"College of the Moon",
+			"College of Valor",
+		],
 		abilities: [
 			{
 				name: "Bardic Inspiration",
@@ -222,10 +251,23 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "CHA",
 	},
 	{
-		assoc: "Cleric",
+		name: "Cleric",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"Grave Domain",
+			"Knowledge Domain",
+			"Life Domain",
+			"Light Domain",
+			"Trickery Domain",
+			"War Domain",
+		],
 		abilities: [
 			{
 				name: "Spellcasting",
@@ -244,18 +286,29 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 5,
 			},
 			{
-				name: "Blessed Strikes", // has upgrade
+				name: "Blessed Strikes",
 				levelReq: 7,
 			},
 			{
-				name: "Divine Intervention", // has upgrade
+				name: "Divine Intervention",
 				levelReq: 10,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "WIS",
 	},
 	{
-		assoc: "Druid",
+		name: "Druid",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"Circle of the Land",
+			"Circle of the Moon",
+			"Circle of the Sea",
+			"Circle of the Stars",
+		],
 		abilities: [
 			{
 				name: "Spellcasting",
@@ -282,7 +335,7 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 5,
 			},
 			{
-				name: "Elemental Fury", // has upgrade
+				name: "Elemental Fury",
 				levelReq: 7,
 			},
 			{
@@ -294,15 +347,25 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "WIS",
 	},
 	{
-		assoc: "Fighter",
+		name: "Fighter",
+		hitdice: {
+			numDice: 1,
+			diceSides: 10,
+		},
+		subclasses: [
+			"Banneret",
+			"Battle Master",
+			"Champion",
+			"Eldritch Knight",
+			"Psi Warrior",
+		],
 		abilities: [
-			// Fighting Style will be in Feat resolution
 			{
 				name: "Second Wind",
-				// Will need to have a unique ability upgrade resolution script
 				trimFeatures: [
 					{
 						description:
@@ -323,7 +386,6 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				],
 				levelReq: 1,
 			},
-			// Weapon Mastery will be in Weapon Mastery resolution
 			{
 				name: "Action Surge",
 				trimFeatures: [
@@ -379,16 +441,21 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				],
 				levelReq: 5,
 			},
-			//TODO: Abilities over level 7
-			// Indomitable
-			// Tactical Master
-			// Two Extra Attacks
-			// Studied Attacks
-			// Three Extra Attacks
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 	},
 	{
-		assoc: "Monk",
+		name: "Monk",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"Warrior of Mercy",
+			"Warrior of Shadow",
+			"Warrior of the Elements",
+			"Warrior of the Open Hand",
+		],
 		abilities: [
 			{
 				name: "Martial Arts",
@@ -467,9 +534,21 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 	},
 	{
-		assoc: "Paladin",
+		name: "Paladin",
+		hitdice: {
+			numDice: 1,
+			diceSides: 10,
+		},
+		subclasses: [
+			"Oath of Devotion",
+			"Oath of Glory",
+			"Oath of the Ancients",
+			"Oath of the Noble Genies",
+			"Oath of Vengeance",
+		],
 		abilities: [
 			{
 				name: "Lay On Hands",
@@ -520,10 +599,23 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 18,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "CHA",
 	},
 	{
-		assoc: "Ranger",
+		name: "Ranger",
+		hitdice: {
+			numDice: 1,
+			diceSides: 10,
+		},
+		subclasses: [
+			"Beast Master",
+			"Fey Wanderer",
+			"Gloom Stalker",
+			"Hollow Warden",
+			"Hunter",
+			"Winter Walker",
+		],
 		abilities: [
 			{
 				name: "Spellcasting",
@@ -574,10 +666,23 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "WIS",
 	},
 	{
-		assoc: "Rogue",
+		name: "Rogue",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"Arcane Trickster",
+			"Assassin",
+			"Phantom",
+			"Scion of the Three",
+			"Soulknife",
+			"Thief",
+		],
 		abilities: [
 			{
 				name: "Expertise",
@@ -600,7 +705,7 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 3,
 			},
 			{
-				name: "Cunning Strike", // has upgrade
+				name: "Cunning Strike",
 				levelReq: 5,
 			},
 			{
@@ -632,9 +737,22 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 	},
 	{
-		assoc: "Sorcerer",
+		name: "Sorcerer",
+		hitdice: {
+			numDice: 1,
+			diceSides: 6,
+		},
+		subclasses: [
+			"Aberrant Sorcery",
+			"Clockwork Sorcery",
+			"Draconic Sorcery",
+			"Shadow Sorcery",
+			"Spellfire Sorcery",
+			"Wild Magic Sorcery",
+		],
 		abilities: [
 			{
 				name: "Spellcasting",
@@ -665,10 +783,22 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "CHA",
 	},
 	{
-		assoc: "Warlock",
+		name: "Warlock",
+		hitdice: {
+			numDice: 1,
+			diceSides: 8,
+		},
+		subclasses: [
+			"Archfey Patron",
+			"Celestial Patron",
+			"Fiend Patron",
+			"Great Old One Patron",
+			"Undead Patron",
+		],
 		abilities: [
 			{
 				name: "Eldritch Invocations",
@@ -695,10 +825,16 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [30, 30, 30, 3, 4, 3],
 		spellAbility: "CHA",
 	},
 	{
-		assoc: "Wizard",
+		name: "Wizard",
+		hitdice: {
+			numDice: 1,
+			diceSides: 6,
+		},
+		subclasses: ["Abjurer", "Bladesinger", "Diviner", "Evoker", "Illusionist"],
 		abilities: [
 			{
 				name: "Spellcasting",
@@ -729,6 +865,7 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 20,
 			},
 		],
+		statWeights: [2, 4, 10, 80, 2, 2],
 		spellAbility: "INT",
 	},
 ];
