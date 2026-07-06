@@ -36,7 +36,9 @@ export default function generateClass(
 		const charClassAbilities = classAbilities.abilities.filter(
 			(ability: Ability) => !ability.levelReq || level >= ability.levelReq
 		);
-		const charHitDice = DND_CLASS_SUBCLASS[classIndex].hitdice;
+		// Copy so we don't mutate the shared DND_CLASS_SUBCLASS entry (generateHp
+		// also mutates numDice on this object).
+		const charHitDice = { ...DND_CLASS_SUBCLASS[classIndex].hitdice };
 		charHitDice.numDice = level;
 
 		const charClass: Class = {

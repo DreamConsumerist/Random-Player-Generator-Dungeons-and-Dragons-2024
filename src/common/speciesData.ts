@@ -286,7 +286,7 @@ export const SPECIES_LIST: Species[] = [
 				],
 			},
 			{
-				name: "ANaturally Stealthy",
+				name: "Naturally Stealthy",
 				trimFeatures: [
 					{
 						description:

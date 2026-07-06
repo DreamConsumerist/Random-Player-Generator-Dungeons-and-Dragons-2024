@@ -8,7 +8,12 @@ export const CharacterSheetPage = () => {
 	if (!rawCharData) {
 		return <div>Missing data to generate a character</div>;
 	} else {
-		const charData = JSON.parse(rawCharData) as CharacterSheet;
+		let charData: CharacterSheet;
+		try {
+			charData = JSON.parse(rawCharData) as CharacterSheet;
+		} catch {
+			return <div>Could not read character data</div>;
+		}
 		return (
 			<div>
 				<div>
@@ -32,13 +37,13 @@ export const CharacterSheetPage = () => {
 				<br />
 				<div>
 					<strong>Species:</strong> {charData.species?.subspecies}&nbsp;
-					{charData.species.name}
+					{charData.species?.name}
 				</div>
 				<div>
 					<strong>Species Abilities:</strong>
 					<ul className="list-disc list-inside">
-						{charData.species.abilities.map((ability, index) => (
-							<li key={`class-ability-${index}`}>{ability.name}</li>
+						{charData.species?.abilities.map((ability, index) => (
+							<li key={`species-ability-${index}`}>{ability.name}</li>
 						))}
 					</ul>
 				</div>

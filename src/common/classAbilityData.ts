@@ -252,7 +252,7 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 				levelReq: 10,
 			},
 		],
-		spellAbility: "CHA",
+		spellAbility: "WIS",
 	},
 	{
 		assoc: "Druid",

@@ -82,7 +82,7 @@ function distributeStats(odds: number[], statArray: number[]): StatArray {
 	) {
 		throw new Error("Odds array not populated");
 	}
-	if (chaThreshold > 100) {
+	if (chaThreshold !== 100) {
 		throw new Error("Odds array does not sum to 100");
 	}
 	// console.log(`str threshold: ${strThreshold}`);
