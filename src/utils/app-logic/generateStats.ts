@@ -20,25 +20,25 @@ function preferenceBaseAllocation(
 		case "Barbarian":
 			return distributeStats([30, 14, 40, 2, 10, 4], statArray);
 		case "Bard":
-			return distributeStats([10, 30, 50, 70, 90, 60], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Cleric":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Druid":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Fighter":
 			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Monk":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Paladin":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Ranger":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Rogue":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Sorcerer":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Warlock":
-			return distributeStats([10, 30, 50, 70, 90, 100], statArray);
+			return distributeStats([30, 30, 30, 3, 4, 3], statArray);
 		case "Wizard":
 			return distributeStats([2, 4, 10, 80, 2, 2], statArray);
 		default:
@@ -82,20 +82,23 @@ function distributeStats(odds: number[], statArray: number[]): StatArray {
 	) {
 		throw new Error("Odds array not populated");
 	}
-	console.log(`str threshold: ${strThreshold}`);
-	console.log(`dex threshold: ${dexThreshold}`);
-	console.log(`con threshold: ${conThreshold}`);
-	console.log(`int threshold: ${intThreshold}`);
-	console.log(`wis threshold: ${wisThreshold}`);
-	console.log(`cha threshold: ${chaThreshold}`);
+	if (chaThreshold > 100) {
+		throw new Error("Odds array does not sum to 100");
+	}
+	// console.log(`str threshold: ${strThreshold}`);
+	// console.log(`dex threshold: ${dexThreshold}`);
+	// console.log(`con threshold: ${conThreshold}`);
+	// console.log(`int threshold: ${intThreshold}`);
+	// console.log(`wis threshold: ${wisThreshold}`);
+	// console.log(`cha threshold: ${chaThreshold}`);
 	let iter = 0;
 	while (iter < 6) {
 		const currStatValue = statArray[iter];
 		if (!currStatValue) {
-			throw new Error("Blah");
+			throw new Error("No stat value");
 		}
 		const randPick = getRandomInt(0, 100);
-		console.log(`Rolled ${randPick}`);
+		// console.log(`Rolled ${randPick}`);
 		switch (true) {
 			case randPick <= strThreshold && charStatArray.str == -1:
 				charStatArray.str = currStatValue;

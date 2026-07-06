@@ -11,20 +11,21 @@ export default function generateClass(
 	try {
 		const classListLength = DND_CLASS_SUBCLASS.length;
 		const classIndex = getRandomInt(0, classListLength - 1);
-		const charBaseClass = DND_CLASS_SUBCLASS[5].class; //classIndex]?.class;
+		const charBaseClass = DND_CLASS_SUBCLASS[classIndex]?.class;
 		let charSubclass;
 		if (level >= 3) {
-			const subclassListLength = DND_CLASS_SUBCLASS[5]?.subclass.length; //classIndex]?.subclass.length;
+			const subclassListLength =
+				DND_CLASS_SUBCLASS[classIndex]?.subclass.length;
 			if (!subclassListLength) {
 				throw new Error("No subclasses found");
 			}
 			const subclassIndex = getRandomInt(0, subclassListLength - 1);
-			charSubclass = DND_CLASS_SUBCLASS[5]?.subclass[subclassIndex]; //classIndex]?.subclass[subclassIndex];
+			charSubclass = DND_CLASS_SUBCLASS[classIndex]?.subclass[subclassIndex];
 		}
 		if (!charBaseClass) {
 			throw new Error("No class found");
 		}
-		//TODO: Collate relevant class and subclass abilities.
+		//TODO: Add subclass abilities
 		const filteredAbilities = CLASS_ABILITIES.filter(
 			(abilityColl: AssocAbilities) => abilityColl.assoc == charBaseClass
 		);
@@ -35,7 +36,7 @@ export default function generateClass(
 		const charClassAbilities = classAbilities.abilities.filter(
 			(ability: Ability) => !ability.levelReq || level >= ability.levelReq
 		);
-		const charHitDice = DND_CLASS_SUBCLASS[5].hitdice;
+		const charHitDice = DND_CLASS_SUBCLASS[classIndex].hitdice;
 		charHitDice.numDice = level;
 
 		const charClass: Class = {
