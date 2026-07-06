@@ -524,32 +524,211 @@ export const CLASS_ABILITIES: AssocAbilities[] = [
 	},
 	{
 		assoc: "Ranger",
-		abilities: [],
-		//TODO: Abilities over level 7
-		spellAbility: "CHA",
+		abilities: [
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Favored Enemy",
+				levelReq: 1,
+			},
+			{
+				name: "Deft Explorer",
+				levelReq: 2,
+			},
+			{
+				name: "Extra Attack",
+				levelReq: 5,
+			},
+			{
+				name: "Roving",
+				levelReq: 6,
+			},
+			{
+				name: "Expertise",
+				levelReq: 9,
+			},
+			{
+				name: "Tireless",
+				levelReq: 10,
+			},
+			{
+				name: "Relentless Hunter",
+				levelReq: 12,
+			},
+			{
+				name: "Nature's Veil",
+				levelReq: 14,
+			},
+			{
+				name: "Precise Hunter",
+				levelReq: 17,
+			},
+			{
+				name: "Feral Senses",
+				levelReq: 18,
+			},
+			{
+				name: "Foe Slayer",
+				levelReq: 20,
+			},
+		],
+		spellAbility: "WIS",
 	},
 	{
 		assoc: "Rogue",
-		abilities: [],
-		//TODO: Abilities over level 7
-		spellAbility: "CHA",
+		abilities: [
+			{
+				name: "Expertise",
+				levelReq: 1,
+			},
+			{
+				name: "Sneak Attack",
+				levelReq: 1,
+			},
+			{
+				name: "Thieves' Cant",
+				levelReq: 1,
+			},
+			{
+				name: "Cunning Action",
+				levelReq: 2,
+			},
+			{
+				name: "Steady Aim",
+				levelReq: 3,
+			},
+			{
+				name: "Cunning Strike", // has upgrade
+				levelReq: 5,
+			},
+			{
+				name: "Uncanny Dodge",
+				levelReq: 5,
+			},
+			{
+				name: "Evasion",
+				levelReq: 7,
+			},
+			{
+				name: "Reliable Talent",
+				levelReq: 7,
+			},
+			{
+				name: "Devious Strikes",
+				levelReq: 14,
+			},
+			{
+				name: "Slippery Mind",
+				levelReq: 15,
+			},
+			{
+				name: "Elusive",
+				levelReq: 18,
+			},
+			{
+				name: "Stroke of Luck",
+				levelReq: 20,
+			},
+		],
 	},
 	{
 		assoc: "Sorcerer",
-		abilities: [],
-		//TODO: Abilities over level 7
+		abilities: [
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Innate Sorcery",
+				levelReq: 2,
+			},
+			{
+				name: "Font of Magic",
+				levelReq: 2,
+			},
+			{
+				name: "Metamagic",
+				levelReq: 2,
+			},
+			{
+				name: "Sorcerous Restoration",
+				levelReq: 5,
+			},
+			{
+				name: "Sorcery Incarnate",
+				levelReq: 7,
+			},
+			{
+				name: "Arcane Apotheosis",
+				levelReq: 20,
+			},
+		],
 		spellAbility: "CHA",
 	},
 	{
 		assoc: "Warlock",
-		abilities: [],
-		//TODO: Abilities over level 7
+		abilities: [
+			{
+				name: "Eldritch Invocations",
+				levelReq: 1,
+			},
+			{
+				name: "Pact Magic",
+				levelReq: 1,
+			},
+			{
+				name: "Magical Cunning",
+				levelReq: 2,
+			},
+			{
+				name: "Contact Patron",
+				levelReq: 9,
+			},
+			{
+				name: "Mystic Arcanum",
+				levelReq: 11,
+			},
+			{
+				name: "Eldritch Master",
+				levelReq: 20,
+			},
+		],
 		spellAbility: "CHA",
 	},
 	{
 		assoc: "Wizard",
-		abilities: [],
-		//TODO: Abilities over level 7
-		spellAbility: "CHA",
+		abilities: [
+			{
+				name: "Spellcasting",
+				levelReq: 1,
+			},
+			{
+				name: "Ritual Adept",
+				levelReq: 1,
+			},
+			{
+				name: "Arcane Recovery",
+				levelReq: 1,
+			},
+			{
+				name: "Scholar",
+				levelReq: 2,
+			},
+			{
+				name: "Memorize Spell",
+				levelReq: 5,
+			},
+			{
+				name: "Spell Mastery",
+				levelReq: 18,
+			},
+			{
+				name: "Signature Spells",
+				levelReq: 20,
+			},
+		],
+		spellAbility: "INT",
 	},
 ];
