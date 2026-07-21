@@ -31,7 +31,7 @@ export interface CharDetails {
 	relationship?: string;
 }
 export interface CharacterSheet {
-	// name: string,
+	name: string;
 	level: number;
 	class: Class;
 	species: Species;
@@ -119,7 +119,10 @@ export interface Weapon {
 	bonusAmt: number;
 }
 
-export interface WeightedArray<T> {
+export interface GeneralArray<T> {
 	value: T;
+}
+export interface WeightedArray<T> {
+	value: T[];
 	weight: number;
 }

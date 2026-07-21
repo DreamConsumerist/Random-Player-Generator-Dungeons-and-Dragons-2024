@@ -1,9 +1,17 @@
-import { DiceRoll, RollResult, WeightedArray } from "./types";
+import { DiceRoll, RollResult, GeneralArray, WeightedArray } from "./types";
 
 export function getRandomInt(min: number, max: number): number {
 	const minCeiled = Math.ceil(min);
 	const maxFloored = Math.floor(max);
 	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
+export function getRandomInList<T>(list: T[]): T {
+	if (list.length === 0) {
+		throw new Error("Attempted to get value from an empty list");
+	}
+
+	return list[getRandomInt(0, list.length - 1)];
 }
 
 export function rollDice(roll: DiceRoll): RollResult {

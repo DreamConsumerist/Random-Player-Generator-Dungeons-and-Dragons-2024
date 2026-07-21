@@ -1,14 +1,13 @@
 import { GenerateCharSheetInput, Class } from "../../common/types";
 import { CLASS_DEFINITIONS } from "../../common/classData";
-import { getRandomInt } from "../../common/generalScripts";
+import { getRandomInList, getRandomInt } from "../../common/generalScripts";
 
 export default function generateClass(
 	input: GenerateCharSheetInput,
 	level: number
 ): Class {
 	try {
-		const classIndex = getRandomInt(0, CLASS_DEFINITIONS.length - 1);
-		const classDef = CLASS_DEFINITIONS[classIndex];
+		const classDef = getRandomInList(CLASS_DEFINITIONS);
 		if (!classDef) {
 			throw new Error("No class found");
 		}

@@ -13,6 +13,9 @@ export const CharacterSheetPage = () => {
 	return (
 		<div>
 			<div>
+				<strong>{charData.name}</strong>
+			</div>
+			<div>
 				<strong>Level:</strong> {charData.level}
 			</div>
 			<br />

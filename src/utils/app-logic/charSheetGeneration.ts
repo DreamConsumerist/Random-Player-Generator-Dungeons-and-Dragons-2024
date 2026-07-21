@@ -4,6 +4,7 @@ import generateClass from "../../utils/app-logic/generateClass";
 import generateSpecies from "./generateSpecies";
 import generateStats from "./generateStats";
 import generateHp from "./generateHp";
+import generateName from "./generateName";
 
 export default function generateCharSheet(
 	input: GenerateCharSheetInput
@@ -14,12 +15,12 @@ export default function generateCharSheet(
 	const charStats = generateStats(charClass);
 	// const charStatsEnhanced = generateBackground(charStats);
 	const charHp = generateHp(charLevel, charClass, charStats);
-	// const charWeapons = generateWeapons(charClass);
-	// const charArmor = generateArmor(charClass)
-
-	// const charName = generateCharName(charClass);
+	// const charWeapons = generateWeapons(charClass); // also include Weapon Mastery stuff here
+	// const charArmor = generateArmor(charClass); // also include AC calculation here
+	// should have something that handles spells separately
+	const charName = generateName(charSpecies, charClass.name, charLevel);
 	const charSheet: CharacterSheet = {
-		// name: charName,
+		name: charName,
 		level: charLevel,
 		class: charClass,
 		species: charSpecies,
